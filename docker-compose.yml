@@ -50,7 +50,7 @@ services:
       - "KEY=${DIRECTUS_KEY}"
       - "SECRET=${DIRECTUS_SECRET}"
 
-      - HOST=0.0.0.0
+      - HOST=${HOST}
       - PORT=${CMS_PORT}
       - PUBLIC_URL=${DIRECTUS_PUBLIC_URL}
 
