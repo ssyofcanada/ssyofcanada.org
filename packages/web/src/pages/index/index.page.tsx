@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { MdAlternateEmail, MdError, MdPerson } from "react-icons/md/index.js";
 
-import {
-  Alert,
-  Box,
-  Button,
-  Container,
-  Image,
-  Text,
-  TextInput,
-  Title,
-} from "@mantine/core";
+import { Box, Container, Image, Text, Title } from "@mantine/core";
 
 import { web_config } from "@lib/config";
 import { BaseBlogPost, BasePage } from "@lib/shared";
@@ -18,6 +8,7 @@ import { Stande } from "@lib/stande";
 
 import { LayoutDefault } from "@components/layouts";
 import { SmallArticleCard } from "@components/display/article";
+import { NewsletterForm } from "@components/forms";
 
 type PageProps = {
   page_data: BasePage;
@@ -27,31 +18,10 @@ export const Page = ({
   page_data: { cover_image, cover_image_caption, heading, content },
 }: PageProps) => {
   const [blogPosts, setBlogPosts] = useState<BaseBlogPost[]>([]);
-  const [formSuccess, setFormSuccess] = useState<boolean | null>(null);
 
-  const { search, post } = new Stande({
+  const { search } = new Stande({
     base_url: web_config.cms_host,
   });
-
-  const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.stopPropagation();
-    e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const email = form.elements.namedItem("email") as HTMLInputElement;
-    const first_name = form.elements.namedItem(
-      "first_name"
-    ) as HTMLInputElement;
-
-    const response = await post("items/marketing_email_list", {
-      body: {
-        email: email.value,
-        first_name: first_name.value,
-      },
-    });
-
-    if (response.ok) setFormSuccess(true);
-    else setFormSuccess(false);
-  };
 
   useEffect(() => {
     const getBlogPosts = async () => {
@@ -124,44 +94,7 @@ export const Page = ({
                 Subscribe to our newsletter to keep up to date with the latest
                 news and events from the team at {web_config.app_title}.
               </Text>
-              <form onSubmit={submitForm}>
-                <Box sx={{ display: "flex", alignItems: "flex-end", gap: 4 }}>
-                  <TextInput
-                    icon={<MdPerson />}
-                    placeholder="First Name"
-                    name="first_name"
-                    autoComplete="given-name"
-                    required
-                  />
-                  <TextInput
-                    icon={<MdAlternateEmail />}
-                    placeholder="Email"
-                    name="email"
-                    autoComplete="email"
-                    required
-                  />
-                  <Button type="submit">Subscribe</Button>
-                </Box>
-              </form>
-              {typeof formSuccess === "boolean" &&
-                (formSuccess ? (
-                  <Alert
-                    icon={<MdError size="1rem" />}
-                    title="Sweet!"
-                    color="green"
-                  >
-                    You have been successfully subscribed to our newsletter!
-                  </Alert>
-                ) : (
-                  <Alert
-                    icon={<MdError size="1rem" />}
-                    title="Bummer!"
-                    color="red"
-                  >
-                    There was an error subscribing you to our newsletter. Please
-                    try again later.
-                  </Alert>
-                ))}
+              <NewsletterForm />
             </Box>
           </Box>
           <Box sx={{ flexBasis: 320, flexGrow: 0 }}>
