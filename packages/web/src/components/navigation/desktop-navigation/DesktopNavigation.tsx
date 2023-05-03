@@ -5,7 +5,7 @@ import { Box, Image, Title } from "@mantine/core";
 import { Link } from "@components/core";
 import { DesktopNavigationItem } from "./DesktopNavigationItem";
 
-const logo = "/assets/logo.svg";
+const logo = "/assets/logo/default.svg";
 
 type DesktopNavigationProps = {
   title: string;
