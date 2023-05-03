@@ -52,15 +52,17 @@ export const Page = ({
   return (
     <>
       <Container>
-        <Image
-          src={`https://${web_config.cms_host}/assets/${cover_image}?key=large-cover`}
-          alt={cover_image_caption}
-          caption={cover_image_caption}
-          style={{
-            overflow: "hidden",
-            borderRadius: 4,
-          }}
-        />
+        {cover_image && (
+          <Image
+            src={`https://${web_config.cms_host}/assets/${cover_image}?key=large-cover`}
+            alt={cover_image_caption}
+            caption={cover_image_caption}
+            style={{
+              overflow: "hidden",
+              borderRadius: 4,
+            }}
+          />
+        )}
         <Box
           sx={{
             display: "flex",
