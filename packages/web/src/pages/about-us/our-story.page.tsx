@@ -19,10 +19,12 @@ export const Page = ({
         <Title color="brand-red">{heading}</Title>
       </Container>
       <Container>
-        <Image
-          src={`https://${web_config.cms_host}/assets/${cover_image}?key=large-cover`}
-          radius={4}
-        />
+        {cover_image && (
+          <Image
+            src={`https://${web_config.cms_host}/assets/${cover_image}?key=large-cover`}
+            radius={4}
+          />
+        )}
         <Text dangerouslySetInnerHTML={{ __html: content }} />
       </Container>
     </>

@@ -32,12 +32,14 @@ export const Page = ({ page_data: post_data }: PageProps) => {
             gap: 16,
           }}
         >
-          <Image
-            src={`https://${web_config.cms_host}/assets/${post_data?.cover_image}?key=large-cover`}
-            // height={240}
-            radius={4}
-            alt={post_data?.cover_image_caption}
-          />
+          {post_data?.cover_image && (
+            <Image
+              src={`https://${web_config.cms_host}/assets/${post_data?.cover_image}?key=large-cover`}
+              // height={240}
+              radius={4}
+              alt={post_data?.cover_image_caption}
+            />
+          )}
           <Box dangerouslySetInnerHTML={{ __html: post_data?.content || "" }} />
           <Box>
             <Text color="dimmed">Published {date_string}</Text>
