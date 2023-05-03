@@ -1,7 +1,8 @@
 import React from "react";
 
-import { FeatureItem, FeatureListItem } from ".";
 import { Box } from "@mantine/core";
+
+import { FeatureItem, FeatureListItem } from ".";
 
 export type FeatureListProps = {
   children?: React.ReactNode;

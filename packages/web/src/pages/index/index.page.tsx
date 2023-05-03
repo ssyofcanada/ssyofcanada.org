@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 
 import { Box, Container, Image, Text, Title } from "@mantine/core";
 
-import { web_config } from "@lib/config";
 import { BaseBlogPost, BasePage } from "@lib/shared";
 import { Stande } from "@lib/stande";
+import { web_config } from "@lib/config";
 
 import { LayoutDefault } from "@components/layouts";
-import { SmallArticleCard } from "@components/display/article";
 import { NewsletterForm } from "@components/forms";
+import { SmallArticleCard } from "@components/display/article";
 
 type PageProps = {
   page_data: BasePage;

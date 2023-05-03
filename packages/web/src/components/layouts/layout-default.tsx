@@ -1,18 +1,17 @@
 import React from "react";
+
 import { Box } from "@mantine/core";
 
-// import { Stande } from "@lib/stande";
 import { web_config } from "@lib/config";
 
-// import { usePageContext } from "@renderer/hooks";
 import {
   DesktopNavigation,
   DesktopNavigationDropdown,
   DesktopNavigationDropdownItem,
   DesktopNavigationItem,
 } from "@components/navigation/desktop-navigation";
-import { Link } from "@components/core";
 import { FooterDefault } from "@components/footers";
+import { Link } from "@components/core";
 
 export type LayoutDefaultProps = {
   children?: React.ReactNode;
@@ -35,7 +34,6 @@ export const Layout = ({
 }: // navigation_items,
 {
   children: React.ReactNode;
-  // navigation_items: NavigationItem[];
 }) => {
   return (
     <Box
@@ -70,6 +68,9 @@ export const Layout = ({
           <DesktopNavigationDropdown title="About Us">
             <DesktopNavigationDropdownItem>
               <Link href="/about-us/our-story">Our Story</Link>
+            </DesktopNavigationDropdownItem>
+            <DesktopNavigationDropdownItem>
+              <Link href="/about-us/our-team">Our Team</Link>
             </DesktopNavigationDropdownItem>
             <DesktopNavigationDropdownItem>
               <Link href="/about-us/our-sponsors">Our Sponsors</Link>

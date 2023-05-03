@@ -2,9 +2,10 @@ import React from "react";
 
 import { Box, Image, Text, Title } from "@mantine/core";
 
-import { web_config } from "@lib/config";
 import { Link } from "@components/core";
+
 import { BaseUser } from "@lib/shared";
+import { web_config } from "@lib/config";
 
 export const ArticleAuthorCard = ({
   avatar,

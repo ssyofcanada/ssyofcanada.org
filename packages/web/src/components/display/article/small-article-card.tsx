@@ -2,9 +2,10 @@ import React from "react";
 
 import { Box, Button, Image, Text, Title } from "@mantine/core";
 
-import { web_config } from "@lib/config";
-import { Link } from "@components/core";
 import { BaseBlogPost } from "@lib/shared";
+import { web_config } from "@lib/config";
+
+import { Link } from "@components/core";
 
 export type SmallArticleCardProps = BaseBlogPost;
 

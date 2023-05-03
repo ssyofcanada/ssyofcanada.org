@@ -1,18 +1,18 @@
-export type HTTPMethod = "post" | "search" | "get" | "patch" | "put" | "delete";
+export type HTTPMethod = "delete" | "get" | "patch" | "post" | "put" | "search";
 
 export type HTTPStatusCodes = 200 | 201 | 204 | 400 | 401 | 404 | 500;
 
 export type StandePayload = {
-  [x: string | number]: string | number | StandePayload;
+  [x: number | string]: StandePayload | number | string;
 };
 
 export type GetParams = {
   parameters?: StandePayload;
-  headers?: { [key: string]: string | number };
+  headers?: { [key: string]: number | string };
 };
 
 export type PostParams<T = StandePayload> = GetParams & {
-  body?: string | StandePayload | T;
+  body?: StandePayload | T | string;
   formData?: StandePayload;
 };
 

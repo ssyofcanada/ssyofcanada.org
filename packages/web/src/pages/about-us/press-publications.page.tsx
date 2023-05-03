@@ -4,12 +4,12 @@ import { Container, Divider, Text, Title } from "@mantine/core";
 
 import { BasePage } from "@lib/shared";
 
-import { LayoutDefault } from "@components/layouts";
 import { FeatureItem, FeatureList } from "@components/display/list";
+import { LayoutDefault } from "@components/layouts";
 
 type PageProps = {
   page_data: BasePage;
-  press_publications: (FeatureItem & BasePage)[];
+  press_publications: (BasePage & FeatureItem)[];
 };
 
 export const Page = ({

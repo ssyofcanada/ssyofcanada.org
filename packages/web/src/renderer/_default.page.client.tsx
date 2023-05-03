@@ -1,7 +1,9 @@
 import React from "react";
-import ReactDOM, { hydrateRoot, createRoot } from "react-dom/client";
+
+import ReactDOM, { createRoot, hydrateRoot } from "react-dom/client";
 
 import { PageContextClient } from "@lib/vite-react";
+
 import { PageShell } from "./pages";
 
 export const clientRouting = true;

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 
-import { LayoutDefault } from "@components/layouts";
 import { Box, Container, Pagination, Title } from "@mantine/core";
-import { ArticleCard } from "@components/display/article";
+
 import { BaseBlogPost } from "@lib/shared";
+
+import { ArticleCard } from "@components/display/article";
+import { LayoutDefault } from "@components/layouts";
 
 type PageProps = {
   blog_posts: BaseBlogPost[];

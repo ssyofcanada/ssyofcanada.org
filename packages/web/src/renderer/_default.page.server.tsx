@@ -1,13 +1,12 @@
 import React from "react";
+
 import { dangerouslySkipEscape, escapeInject } from "vite-plugin-ssr/server";
 import ReactDOMServer from "react-dom/server";
 
-import { Stande } from "@lib/stande";
 import { base_config, web_config } from "@lib/config";
 import { PageContextServer } from "@lib/vite-react";
+import { Stande } from "@lib/stande";
 
-// import logo from "@assets/logo.svg";
-// const logo = "/assets/logo.svg";
 import { PageShell } from "./pages";
 
 // See https://vite-plugin-ssr.com/data-fetching

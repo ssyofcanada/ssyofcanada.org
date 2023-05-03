@@ -1,11 +1,12 @@
 import React from "react";
 
 import { Avatar, Box, Button, Card, Image, Text } from "@mantine/core";
-
-import { web_config } from "@lib/config";
-import { Link } from "@components/core";
 import { format } from "date-fns";
+
 import { BaseBlogPost } from "@lib/shared";
+import { web_config } from "@lib/config";
+
+import { Link } from "@components/core";
 
 export type ArticleCardProps = BaseBlogPost;
 

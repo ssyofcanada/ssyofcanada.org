@@ -3,8 +3,8 @@ require("dotenv").config({
   path: "../../.env",
 });
 
-import { api_config } from "@lib/config";
 import { Stande } from "@lib/stande";
+import { api_config } from "@lib/config";
 
 const { get } = new Stande({
   base_url: api_config.cms_host,

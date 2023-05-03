@@ -9,8 +9,8 @@ declare module "@lib/vite-react" {
   type Page = ReactNode;
 
   export type PageContext = {
-    Page: Page &
-      FunctionComponent & {
+    Page: FunctionComponent &
+      Page & {
         getLayout: (page: ReactNode) => Page;
       };
     pageProps?: PageProps;
@@ -23,8 +23,8 @@ declare module "@lib/vite-react" {
     };
   };
 
-  type PageContextServer = PageContextBuiltIn<Page> & PageContext;
-  type PageContextClient = PageContextBuiltInClient<Page> & PageContext;
+  type PageContextServer = PageContext & PageContextBuiltIn<Page>;
+  type PageContextClient = PageContext & PageContextBuiltInClient<Page>;
 
   type PageContext = PageContextClient | PageContextServer;
 }

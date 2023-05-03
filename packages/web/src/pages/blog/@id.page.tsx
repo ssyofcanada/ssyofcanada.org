@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Box, Container, Image, Text, Title } from "@mantine/core";
 import { format } from "date-fns";
 
@@ -7,8 +8,8 @@ import { PageContextServer } from "@lib/vite-react";
 import { Stande } from "@lib/stande";
 import { web_config } from "@lib/config";
 
-import { LayoutDefault } from "@components/layouts";
 import { ArticleAuthorCard } from "@components/display/article";
+import { LayoutDefault } from "@components/layouts";
 
 type PageProps = {
   page_data: BaseBlogPost;
