@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Box, Container, Divider, Image, Text, Title } from "@mantine/core";
-import { FiArrowLeft, FiArrowRight, FiCamera } from "react-icons/fi";
+import { FiArrowLeft, FiArrowRight, FiCamera } from "react-icons/fi/index.js";
 import { Carousel } from "@mantine/carousel";
 
 import { BasePage } from "@lib/shared";
@@ -27,7 +27,7 @@ export const Page = ({
   page_data: { cover_image, heading, content },
   overview_list,
 }: PageProps) => {
-  const OverviewItemCarousel = ({
+  const RenderOverviewItemCarousel = ({
     images,
   }: {
     images: OverviewItemImage[];
@@ -111,7 +111,7 @@ export const Page = ({
     );
   };
 
-  const OverviewItem = ({ heading, content, images }: OverviewItem) => {
+  const RenderOverviewItem = ({ heading, content, images }: OverviewItem) => {
     return (
       <Box
         sx={{
@@ -119,9 +119,6 @@ export const Page = ({
           flexDirection: "row",
           gap: 16,
           "@media (max-width: 860px)": {
-            flexDirection: "column-reverse",
-          },
-          "@media (max-width: 720px)": {
             flexDirection: "column-reverse",
           },
         }}
@@ -134,7 +131,7 @@ export const Page = ({
             },
           }}
         >
-          <OverviewItemCarousel images={images} />
+          <RenderOverviewItemCarousel images={images} />
         </Box>
         <Box
           sx={{
@@ -182,7 +179,7 @@ export const Page = ({
           }}
         >
           {overview_list.map((item) => (
-            <OverviewItem {...item} key={item.id} />
+            <RenderOverviewItem {...item} key={item.id} />
           ))}
         </Box>
       </Container>
@@ -195,6 +192,11 @@ export const query = {
   overview_list: {
     model: "items/conference_overview_list",
     select: ["*", "images.directus_files_id.*"],
+    filter: {
+      status: {
+        _eq: "published",
+      },
+    },
   },
 };
 

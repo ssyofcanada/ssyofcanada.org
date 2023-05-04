@@ -83,11 +83,11 @@ export const Layout = ({
             <DesktopNavigationDropdownItem>
               <Link href="/about-us/our-sponsors">Our Sponsors</Link>
             </DesktopNavigationDropdownItem>
-            <DesktopNavigationDropdownItem>
+            {/* <DesktopNavigationDropdownItem>
               <Link href="/about-us/press-publications">
                 Press & Publications
               </Link>
-            </DesktopNavigationDropdownItem>
+            </DesktopNavigationDropdownItem> */}
             {/* <DesktopNavigationDropdownItem>
               <Link href="/about-us/financial-reports">Financial Reports</Link>
             </DesktopNavigationDropdownItem> */}

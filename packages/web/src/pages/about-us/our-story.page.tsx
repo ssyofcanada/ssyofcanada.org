@@ -38,10 +38,6 @@ export const Page = ({
             </Title>
             <Box
               sx={{
-                // display: "flex",
-                // flexWrap: "wrap",
-                // justifyContent: "center",
-                // gap: 12,
                 display: "grid",
                 "grid-template-columns": `repeat(4, 1fr)`,
                 columnGap: 8,
@@ -95,7 +91,14 @@ export const Page = ({
 
 export const query = {
   page_data: { model: "items/our_story" },
-  community_branches: { model: "items/community_branch_list" },
+  community_branches: {
+    model: "items/community_branch_list",
+    filter: {
+      status: {
+        _eq: "published",
+      },
+    },
+  },
 };
 
 Page.getLayout = (page: React.ReactNode) => {

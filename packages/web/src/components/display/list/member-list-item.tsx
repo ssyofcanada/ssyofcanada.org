@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Box, Drawer, Image, Text, Title } from "@mantine/core";
-import { FiInstagram, FiMail, FiStar } from "react-icons/fi";
+import { FiInstagram, FiMail, FiStar } from "react-icons/fi/index.js";
 
 import { BaseMemberListItem } from "@lib/shared";
 import { web_config } from "@lib/config";

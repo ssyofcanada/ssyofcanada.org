@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Badge, Box, Drawer, Image, Text, Title } from "@mantine/core";
-import { FiInstagram, FiLink, FiMail } from "react-icons/fi";
+import { Box, Drawer, Image, Text, Title } from "@mantine/core";
+import { FiInstagram, FiLink, FiMail } from "react-icons/fi/index.js";
 
 import { BaseCoverImage, SponsorTier, SponsorTierColor } from "@lib/shared";
 import { web_config } from "@lib/config";
@@ -116,16 +116,15 @@ export const FeatureListItem = ({
           position: "relative",
           display: "flex",
           justifyContent: center ? "center" : "initial",
-          height: 192,
+          ":hover": { cursor: "pointer" },
         }}
       >
         {/* <Link href={`https://${website_link}`} sx={{ display: "block" }}> */}
         <Image
           src={`https://${web_config.cms_host}/assets/${cover_image}?key=small-logo`}
           radius="sm"
-          fit="contain"
           width="auto"
-          height={192}
+          height={172}
           onClick={open}
         />
         {/* </Link> */}
@@ -150,7 +149,7 @@ export const FeatureListItem = ({
         <Title size="md" order={3} color="brand-red">
           {name}
         </Title>
-        {!!tier && tier > 1 && (
+        {/* {!!tier && tier > 1 && (
           <Badge
             variant="filled"
             radius="sm"
@@ -162,7 +161,7 @@ export const FeatureListItem = ({
               ":after": { content: `'${SponsorTier[tier]} Sponsor'` },
             }}
           />
-        )}
+        )} */}
         {!!tier && tier > 0 && (
           <Title size="md" order={3} color={SponsorTierColor[tier || 0]}>
             {`${SponsorTier[tier]} Sponsor`}

@@ -33,7 +33,14 @@ export const Page = ({ page_data, presenter_list }: PageProps) => {
 
 export const query = {
   page_data: { model: "items/conference_presenters" },
-  presenter_list: { model: "items/conference_presenter_list" },
+  presenter_list: {
+    model: "items/conference_presenter_list",
+    filter: {
+      status: {
+        _eq: "published",
+      },
+    },
+  },
 };
 
 Page.getLayout = (page: React.ReactNode) => {

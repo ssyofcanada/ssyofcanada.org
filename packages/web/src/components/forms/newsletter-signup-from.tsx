@@ -40,7 +40,7 @@ export const NewsletterForm = () => {
           sx={{
             display: "flex",
             alignItems: "flex-end",
-            gap: 4,
+            gap: 8,
             "@media (max-width: 680px)": {
               flexDirection: "column",
               alignItems: "stretch",

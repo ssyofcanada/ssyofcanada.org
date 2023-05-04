@@ -63,32 +63,32 @@ export const ArticleCard = ({
               height={172}
               alt={`${heading}`}
             />
-          </Link>
 
-          <Box
-            sx={{
-              display: "none",
-              visibility: "hidden",
-              position: "absolute",
-              background: "#0008",
-              width: "100%",
-              height: "100%",
-              left: 0,
-              top: 0,
-            }}
-          >
-            <Text
-              size="sm"
+            <Box
               sx={{
+                display: "none",
+                visibility: "hidden",
                 position: "absolute",
-                left: 8,
-                top: 8,
-                color: "white",
+                background: "#0008",
+                width: "100%",
+                height: "100%",
+                left: 0,
+                top: 0,
               }}
             >
-              {heading}
-            </Text>
-          </Box>
+              <Text
+                size="sm"
+                sx={{
+                  position: "absolute",
+                  left: 8,
+                  top: 8,
+                  color: "white",
+                }}
+              >
+                {heading}
+              </Text>
+            </Box>
+          </Link>
         </Card.Section>
       )}
 

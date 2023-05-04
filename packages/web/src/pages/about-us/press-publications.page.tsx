@@ -4,7 +4,11 @@ import { Container, Divider, Text, Title } from "@mantine/core";
 
 import { BasePage } from "@lib/shared";
 
-import { FeatureItem, FeatureList } from "@components/display/list";
+import {
+  BaseList,
+  FeatureItem,
+  FeatureListItem,
+} from "@components/display/list";
 import { LayoutDefault } from "@components/layouts";
 
 type PageProps = {
@@ -24,12 +28,14 @@ export const Page = ({
       <Container>
         <Text dangerouslySetInnerHTML={{ __html: content }} />
         <Divider sx={{ margin: "8px 0px" }} />
-        <FeatureList
+        <BaseList
           items={press_publications.map((x) => ({
             ...x,
             name: x.heading,
             hide_link: true,
           }))}
+          item_type={FeatureListItem}
+          center
         />
       </Container>
     </>

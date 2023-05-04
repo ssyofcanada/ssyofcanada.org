@@ -33,7 +33,6 @@ export const Page = ({
   const bronze_sponsors = sponsor_list.filter(
     (sponsor) => sponsor.tier === SponsorTier.BRONZE
   );
-  console.log(sponsor_list);
 
   return (
     <>
@@ -78,7 +77,14 @@ export const Page = ({
 
 export const query = {
   page_data: { model: "items/our_sponsors" },
-  sponsor_list: { model: "items/sponsor_list" },
+  sponsor_list: {
+    model: "items/sponsor_list",
+    filter: {
+      status: {
+        _eq: "published",
+      },
+    },
+  },
 };
 
 Page.getLayout = (page: React.ReactNode) => {

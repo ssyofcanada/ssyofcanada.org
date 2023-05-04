@@ -82,6 +82,7 @@ export const Page = ({
                 <NewsletterForm />
               </Box>
             </Box>
+
             <Box sx={{ flexBasis: 320, flexGrow: 0 }}>
               <Title size="h2" order={2} color="brand-red" mb={16}>
                 Recent Blog Posts
