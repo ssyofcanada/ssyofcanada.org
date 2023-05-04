@@ -27,6 +27,7 @@ export const render = async (pageContext: PageContextServer) => {
   const {
     Page,
     pageProps,
+    urlPathname,
     exports: {
       documentProps = {
         title: "",
@@ -56,6 +57,7 @@ export const render = async (pageContext: PageContextServer) => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${description}" />
+    		<link rel="canonical" href="https://${web_config.web_host}${urlPathname}"/>
         <title>${title}</title>
 				<link rel="manifest" href="/manifest.json">
         <link rel="icon" href="https://${web_config.host}/favicon.svg" />
