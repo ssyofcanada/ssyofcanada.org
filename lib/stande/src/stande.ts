@@ -51,6 +51,7 @@ export class Stande {
         formPayload.append(key, formData[key]);
       });
     }
+
     const data = await (fetch(
       parameters && Object.keys(parameters).length > 0
         ? [
@@ -85,8 +86,8 @@ export class Stande {
     path: string,
     { headers, parameters, body, formData }: PostParams<K> = {}
   ): Promise<
+    | { ok: false; data: R | T | null; error: string; status: HTTPStatusCodes }
     | { ok: true; data: T; error: null }
-    | { ok: false; data: null | T | R; error: string; status: HTTPStatusCodes }
   > => {
     const data = await this.fetch<T>(path, {
       method: "post",
@@ -135,8 +136,8 @@ export class Stande {
     path: string,
     { headers, parameters, body, formData }: PostParams<K> = {}
   ): Promise<
+    | { ok: false; data: R | T | null; error: string; status: HTTPStatusCodes }
     | { ok: true; data: T; error: null }
-    | { ok: false; data: null | T | R; error: string; status: HTTPStatusCodes }
   > => {
     const data = await this.fetch<T>(path, {
       method: "search",
@@ -185,8 +186,8 @@ export class Stande {
     path: string,
     { headers, parameters }: GetParams = {}
   ): Promise<
+    | { ok: false; data: R | T | null; error: string; status: HTTPStatusCodes }
     | { ok: true; data: T; error: null }
-    | { ok: false; data: null | T | R; error: string; status: HTTPStatusCodes }
   > => {
     const data = await this.fetch<T>(path, {
       method: "get",
@@ -233,8 +234,8 @@ export class Stande {
     path: string,
     { headers, parameters, body, formData }: PostParams<K> = {}
   ): Promise<
+    | { ok: false; data: R | T | null; error: string; status: HTTPStatusCodes }
     | { ok: true; data: T; error: null }
-    | { ok: false; data: null | T | R; error: string; status: HTTPStatusCodes }
   > => {
     const data = await this.fetch<T>(path, {
       method: "patch",
@@ -284,8 +285,8 @@ export class Stande {
     path: string,
     { headers, parameters }: GetParams = {}
   ): Promise<
+    | { ok: false; data: R | T | null; error: string; status: HTTPStatusCodes }
     | { ok: true; data: T; error: null }
-    | { ok: false; data: null | T | R; error: string; status: HTTPStatusCodes }
   > => {
     const data = await this.fetch<T>(path, {
       method: "delete",

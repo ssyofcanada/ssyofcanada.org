@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import { MdAlternateEmail, MdError, MdPerson } from "react-icons/md/index.js";
 import { Alert, Box, Button, TextInput } from "@mantine/core";
+import { MdAlternateEmail, MdError, MdPerson } from "react-icons/md/index.js";
 
-import { web_config } from "@lib/config";
 import { Stande } from "@lib/stande";
+import { web_config } from "@lib/config";
 
 export const NewsletterForm = () => {
   const [formSuccess, setFormSuccess] = useState<boolean | null>(null);
@@ -40,7 +40,7 @@ export const NewsletterForm = () => {
           sx={{
             display: "flex",
             alignItems: "flex-end",
-            gap: 4,
+            gap: 8,
             "@media (max-width: 680px)": {
               flexDirection: "column",
               alignItems: "stretch",

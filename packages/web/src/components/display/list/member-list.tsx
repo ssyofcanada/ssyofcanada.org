@@ -2,14 +2,16 @@ import React from "react";
 
 import { Box } from "@mantine/core";
 
-import { FeatureItem, FeatureListItem } from ".";
+import { BaseMemberListItem } from "@lib/shared";
 
-export type FeatureListProps = {
+import { MemberListItem } from ".";
+
+export type MemberListProps = {
   children?: React.ReactNode;
-  items: FeatureItem[];
+  items: BaseMemberListItem[];
 };
 
-export const FeatureList = ({ items }: FeatureListProps) => {
+export const MemberList = ({ items }: MemberListProps) => {
   return (
     <Box
       sx={{
@@ -26,7 +28,7 @@ export const FeatureList = ({ items }: FeatureListProps) => {
       }}
     >
       {items.map((item) => (
-        <FeatureListItem key={item.name} item={item} />
+        <MemberListItem key={item.id} item={item} />
       ))}
     </Box>
   );

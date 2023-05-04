@@ -1,11 +1,8 @@
 const env = typeof window === "undefined" ? process.env : import.meta.env;
 
 export type IConfigEnvironment =
-  | "production"
-  | "staging"
-  | "test"
-  | "development";
-export type IConfigLogErrors = true | false;
+  "development" | "production" | "staging" | "test";
+export type IConfigLogErrors = false | true;
 
 export type IBaseConfig = {
   /** general */

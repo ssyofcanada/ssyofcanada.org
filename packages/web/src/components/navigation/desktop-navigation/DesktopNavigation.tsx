@@ -3,6 +3,7 @@ import React from "react";
 import { Box, Image, Title } from "@mantine/core";
 
 import { Link } from "@components/core";
+
 import { DesktopNavigationItem } from "./DesktopNavigationItem";
 
 const logo = "/assets/logo/default.svg";

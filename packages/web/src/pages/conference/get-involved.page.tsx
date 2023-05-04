@@ -2,8 +2,9 @@ import React from "react";
 
 import { Container, Text, Title } from "@mantine/core";
 
-import { LayoutDefault } from "@components/layouts";
 import { BasePage } from "@lib/shared";
+
+import { LayoutDefault } from "@components/layouts";
 
 type PageProps = {
   page_data: BasePage;

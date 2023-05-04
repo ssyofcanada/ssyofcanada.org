@@ -18,3 +18,12 @@
 #main-content {
   display: none;
 }
+
+.page-content {
+  img {
+    display: block;
+    max-width: 480px;
+    max-height: 320px;
+    margin: auto;
+  }
+}

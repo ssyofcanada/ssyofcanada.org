@@ -1,11 +1,12 @@
 import React from "react";
 
-import { Avatar, Box, Button, Card, Image, Text } from "@mantine/core";
-
-import { web_config } from "@lib/config";
-import { Link } from "@components/core";
+import { Avatar, Box, Button, Card, Image, Text, Title } from "@mantine/core";
 import { format } from "date-fns";
+
 import { BaseBlogPost } from "@lib/shared";
+import { web_config } from "@lib/config";
+
+import { Link } from "@components/core";
 
 export type ArticleCardProps = BaseBlogPost;
 
@@ -24,7 +25,7 @@ export const ArticleCard = ({
     <Card
       shadow="sm"
       padding="lg"
-      radius="md"
+      radius="sm"
       withBorder
       sx={{
         display: "flex",
@@ -33,29 +34,75 @@ export const ArticleCard = ({
         height: "100%",
       }}
     >
-      <Card.Section>
-        <Link
-          href={`/blog/${id}`}
+      {cover_image && (
+        <Card.Section
           sx={{
+            position: "relative",
+            borderRadius: "sm",
+            overflow: "hidden",
             ":hover": {
-              "animation-duration": "0.5s",
-              opacity: 0.8,
+              cursor: "pointer",
+              "&>div": {
+                display: "block",
+                visibility: "visible",
+              },
             },
           }}
         >
-          <Image
-            src={`https://${web_config.cms_host}/assets/${cover_image}?key=small-cover`}
-            height={172}
-            // radius={4}
-            alt={`${heading} - Blog cover image`}
-          />
-        </Link>
-      </Card.Section>
+          <Link
+            href={`/blog/${id}`}
+            sx={{
+              ":hover": {
+                "animation-duration": "0.5s",
+                opacity: 0.8,
+              },
+            }}
+          >
+            <Image
+              src={`https://${web_config.cms_host}/assets/${cover_image}?key=small-cover`}
+              height={172}
+              alt={`${heading}`}
+            />
+
+            <Box
+              sx={{
+                display: "none",
+                visibility: "hidden",
+                position: "absolute",
+                background: "#0008",
+                width: "100%",
+                height: "100%",
+                left: 0,
+                top: 0,
+              }}
+            >
+              <Text
+                size="sm"
+                sx={{
+                  position: "absolute",
+                  left: 8,
+                  top: 8,
+                  color: "white",
+                }}
+              >
+                {heading}
+              </Text>
+            </Box>
+          </Link>
+        </Card.Section>
+      )}
 
       <Box mt={8} mb={4} sx={{ flexGrow: 1 }}>
-        <Text size="sm" lineClamp={4}>
-          {content_preview}
-        </Text>
+        {!cover_image && (
+          <Title size="sm" order={2}>
+            {heading}
+          </Title>
+        )}
+        <Text
+          size="sm"
+          lineClamp={cover_image ? 4 : 8}
+          dangerouslySetInnerHTML={{ __html: content_preview ?? "" }}
+        />
       </Box>
 
       <Box mt={4} mb={8}>

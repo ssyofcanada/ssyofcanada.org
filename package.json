@@ -60,10 +60,6 @@
     "web:start": "yarn service:start web"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@mantine/core": "^6.0.7",
-    "@mantine/hooks": "^6.0.7",
-    "@mantine/ssr": "^6.0.7",
     "cross-env": "~7.0.3",
     "dotenv": "~16.0.3",
     "dotenv-expand": "~10.0.0",

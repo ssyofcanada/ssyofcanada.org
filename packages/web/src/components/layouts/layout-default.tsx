@@ -1,18 +1,17 @@
 import React from "react";
+
 import { Box } from "@mantine/core";
 
-// import { Stande } from "@lib/stande";
 import { web_config } from "@lib/config";
 
-// import { usePageContext } from "@renderer/hooks";
 import {
   DesktopNavigation,
   DesktopNavigationDropdown,
   DesktopNavigationDropdownItem,
   DesktopNavigationItem,
 } from "@components/navigation/desktop-navigation";
-import { Link } from "@components/core";
 import { FooterDefault } from "@components/footers";
+import { Link } from "@components/core";
 
 export type LayoutDefaultProps = {
   children?: React.ReactNode;
@@ -35,15 +34,19 @@ export const Layout = ({
 }: // navigation_items,
 {
   children: React.ReactNode;
-  // navigation_items: NavigationItem[];
 }) => {
   return (
     <Box
-      px={52}
       sx={{
         display: "flex !important",
         flexDirection: "column",
-        gap: 16,
+        padding: "0px 52px",
+        "@media (max-width: 980px)": {
+          padding: "0px 24px",
+        },
+        "@media (max-width: 720px)": {
+          padding: "0px 12px",
+        },
       }}
     >
       <Box py={24}>
@@ -54,6 +57,9 @@ export const Layout = ({
             </DesktopNavigationDropdownItem>
             <DesktopNavigationDropdownItem>
               <Link href="/conference/itinerary">Conference Itinerary</Link>
+            </DesktopNavigationDropdownItem>
+            <DesktopNavigationDropdownItem>
+              <Link href="/conference/presenters">Presenters</Link>
             </DesktopNavigationDropdownItem>
             <DesktopNavigationDropdownItem>
               <Link href="/conference/vendors">Vendors</Link>
@@ -72,16 +78,19 @@ export const Layout = ({
               <Link href="/about-us/our-story">Our Story</Link>
             </DesktopNavigationDropdownItem>
             <DesktopNavigationDropdownItem>
-              <Link href="/about-us/our-sponsors">Our Sponsors</Link>
+              <Link href="/about-us/our-team">Our Team</Link>
             </DesktopNavigationDropdownItem>
             <DesktopNavigationDropdownItem>
+              <Link href="/about-us/our-sponsors">Our Sponsors</Link>
+            </DesktopNavigationDropdownItem>
+            {/* <DesktopNavigationDropdownItem>
               <Link href="/about-us/press-publications">
                 Press & Publications
               </Link>
-            </DesktopNavigationDropdownItem>
-            <DesktopNavigationDropdownItem>
+            </DesktopNavigationDropdownItem> */}
+            {/* <DesktopNavigationDropdownItem>
               <Link href="/about-us/financial-reports">Financial Reports</Link>
-            </DesktopNavigationDropdownItem>
+            </DesktopNavigationDropdownItem> */}
           </DesktopNavigationDropdown>
 
           <DesktopNavigationItem>

@@ -11,17 +11,18 @@ import {
   Textarea,
   Title,
 } from "@mantine/core";
-
-import { LayoutDefault } from "@components/layouts";
-import { BasePage } from "@lib/shared";
 import {
   MdAlternateEmail,
   MdEmail,
   MdError,
   MdPerson,
 } from "react-icons/md/index.js";
+
+import { BasePage } from "@lib/shared";
 import { Stande } from "@lib/stande";
 import { web_config } from "@lib/config";
+
+import { LayoutDefault } from "@components/layouts";
 
 type PageProps = {
   page_data: BasePage;

@@ -2,9 +2,10 @@ import React from "react";
 
 import { Box, Button, Image, Text, Title } from "@mantine/core";
 
-import { web_config } from "@lib/config";
-import { Link } from "@components/core";
 import { BaseBlogPost } from "@lib/shared";
+import { web_config } from "@lib/config";
+
+import { Link } from "@components/core";
 
 export type SmallArticleCardProps = BaseBlogPost;
 
@@ -26,13 +27,15 @@ export const SmallArticleCard = ({
             },
           }}
         >
-          <Image
-            src={`https://${web_config.cms_host}/assets/${cover_image}?key=small-avatar`}
-            alt={`${heading} - Blog cover image`}
-            height={72}
-            width={72}
-            radius={4}
-          />
+          {cover_image && (
+            <Image
+              src={`https://${web_config.cms_host}/assets/${cover_image}?key=small-avatar`}
+              alt={`${heading} - Blog cover image`}
+              height={72}
+              width={72}
+              radius={4}
+            />
+          )}
         </Link>
         <Box sx={{ flexGrow: 1 }}>
           <Title size="xs" order={4} lineClamp={1}>

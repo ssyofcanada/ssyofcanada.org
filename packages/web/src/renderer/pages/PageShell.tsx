@@ -1,11 +1,13 @@
 import React, { StrictMode } from "react";
+
 import { Box, MantineProvider } from "@mantine/core";
 
 import { PageContext } from "@lib/vite-react";
 
 import { PageContextProvider } from "@renderer/hooks";
-import "./PageShell.scss";
 import { StoreProvider } from "@stores";
+
+import "./PageShell.scss";
 
 export type PageShellProps = {
   children: React.ReactNode;

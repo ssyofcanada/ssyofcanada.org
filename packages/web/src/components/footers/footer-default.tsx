@@ -1,8 +1,8 @@
 import React from "react";
-import { Box } from "@mantine/core";
 
-import { MdCopyright } from "react-icons/md/index.js";
 import { FiFacebook, FiInstagram, FiMail } from "react-icons/fi/index.js";
+import { Box } from "@mantine/core";
+import { MdCopyright } from "react-icons/md/index.js";
 
 import { web_config } from "@lib/config";
 

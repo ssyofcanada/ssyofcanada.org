@@ -1,5 +1,5 @@
-import { web_config } from "@lib/config";
 import { Stande } from "@lib/stande";
+import { web_config } from "@lib/config";
 
 export const apiStore = () => {
   const stande = new Stande({
