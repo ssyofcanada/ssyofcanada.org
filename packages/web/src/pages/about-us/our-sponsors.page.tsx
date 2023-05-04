@@ -1,10 +1,15 @@
 import React from "react";
 
-import { Container, Divider, Text, Title } from "@mantine/core";
+import { Box, Container, Divider, Text, Title } from "@mantine/core";
 
-import { BasePage } from "@lib/shared";
+import { BasePage, SponsorTier } from "@lib/shared";
 
-import { FeatureItem, FeatureList } from "@components/display/list";
+import {
+  BaseList,
+  FeatureItem,
+  FeatureList,
+  FeatureListItem,
+} from "@components/display/list";
 import { LayoutDefault } from "@components/layouts";
 
 type PageProps = {
@@ -12,16 +17,60 @@ type PageProps = {
   sponsor_list: FeatureItem[];
 };
 
-export const Page = ({ page_data, sponsor_list }: PageProps) => {
+export const Page = ({
+  page_data: { heading, content },
+  sponsor_list,
+}: PageProps) => {
+  const in_kind_sponsors = sponsor_list.filter(
+    (sponsor) => sponsor.tier === SponsorTier.IN_KIND
+  );
+  const gold_sponsors = sponsor_list.filter(
+    (sponsor) => sponsor.tier === SponsorTier.GOLD
+  );
+  const silver_sponsors = sponsor_list.filter(
+    (sponsor) => sponsor.tier === SponsorTier.SILVER
+  );
+  const bronze_sponsors = sponsor_list.filter(
+    (sponsor) => sponsor.tier === SponsorTier.BRONZE
+  );
+  console.log(sponsor_list);
+
   return (
     <>
       <Container>
-        <Title color="brand-red">{page_data.heading}</Title>
+        <Title size="h1" order={1} color="brand-red">
+          {heading}
+        </Title>
       </Container>
       <Container>
-        <Text dangerouslySetInnerHTML={{ __html: page_data.content }} />
+        <Text dangerouslySetInnerHTML={{ __html: content }} />
         <Divider sx={{ margin: "8px 0px" }} />
-        <FeatureList items={sponsor_list} />
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <Box>
+            <Title size="h2" order={2} color="brand-red">
+              Gold Sponsors
+            </Title>
+            <FeatureList items={gold_sponsors} />
+          </Box>
+          <Box>
+            <Title size="h2" order={2} color="brand-red">
+              Silver Sponsors
+            </Title>
+            <BaseList items={silver_sponsors} item_type={FeatureListItem} />
+          </Box>
+          <Box>
+            <Title size="h2" order={2} color="brand-red">
+              Bronze Sponsors
+            </Title>
+            <FeatureList items={bronze_sponsors} />
+          </Box>
+          <Box>
+            <Title size="h2" order={2} color="brand-red">
+              Sponsors in Kind
+            </Title>
+            <FeatureList items={in_kind_sponsors} />
+          </Box>
+        </Box>
       </Container>
     </>
   );

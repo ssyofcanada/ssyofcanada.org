@@ -10,6 +10,7 @@ import { LayoutDefault } from "@components/layouts";
 type PageProps = {
   blog_posts: BaseBlogPost[];
 };
+
 export const Page = ({ blog_posts }: PageProps) => {
   const [activePage, setPage] = useState(1);
   return (
@@ -44,15 +45,9 @@ export const Page = ({ blog_posts }: PageProps) => {
             },
           }}
         >
-          {blog_posts
-            ?.sort(
-              (a, b) =>
-                new Date(b.date_created).getTime() -
-                new Date(a.date_created).getTime()
-            )
-            .map((x) => (
-              <ArticleCard key={x.id} {...x} />
-            ))}
+          {blog_posts.map((x) => (
+            <ArticleCard key={x.id} {...x} />
+          ))}
         </Box>
         <Pagination value={activePage} onChange={setPage} total={1} disabled />
       </Container>
@@ -63,10 +58,9 @@ export const Page = ({ blog_posts }: PageProps) => {
 export const query = {
   blog_posts: {
     model: "items/blog_post",
-    method: "search",
     select: ["*", "user_created.*"],
     parameters: {
-      sort: "date_created",
+      "sort[]": "-date_created",
     },
     filter: {
       status: {

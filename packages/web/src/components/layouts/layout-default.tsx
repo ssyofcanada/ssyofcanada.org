@@ -37,11 +37,16 @@ export const Layout = ({
 }) => {
   return (
     <Box
-      px={52}
       sx={{
         display: "flex !important",
         flexDirection: "column",
-        gap: 16,
+        padding: "0px 52px",
+        "@media (max-width: 980px)": {
+          padding: "0px 24px",
+        },
+        "@media (max-width: 720px)": {
+          padding: "0px 12px",
+        },
       }}
     >
       <Box py={24}>
@@ -52,6 +57,9 @@ export const Layout = ({
             </DesktopNavigationDropdownItem>
             <DesktopNavigationDropdownItem>
               <Link href="/conference/itinerary">Conference Itinerary</Link>
+            </DesktopNavigationDropdownItem>
+            <DesktopNavigationDropdownItem>
+              <Link href="/conference/presenters">Presenters</Link>
             </DesktopNavigationDropdownItem>
             <DesktopNavigationDropdownItem>
               <Link href="/conference/vendors">Vendors</Link>
@@ -80,9 +88,9 @@ export const Layout = ({
                 Press & Publications
               </Link>
             </DesktopNavigationDropdownItem>
-            <DesktopNavigationDropdownItem>
+            {/* <DesktopNavigationDropdownItem>
               <Link href="/about-us/financial-reports">Financial Reports</Link>
-            </DesktopNavigationDropdownItem>
+            </DesktopNavigationDropdownItem> */}
           </DesktopNavigationDropdown>
 
           <DesktopNavigationItem>

@@ -13,10 +13,10 @@ import { LayoutDefault } from "@components/layouts";
 
 type PageProps = {
   page_data: BasePage;
-  vendor_list: FeatureItem[];
+  presenter_list: FeatureItem[];
 };
 
-export const Page = ({ page_data, vendor_list }: PageProps) => {
+export const Page = ({ page_data, presenter_list }: PageProps) => {
   return (
     <>
       <Container>
@@ -25,15 +25,15 @@ export const Page = ({ page_data, vendor_list }: PageProps) => {
       <Container>
         <Text dangerouslySetInnerHTML={{ __html: page_data.content }} />
         <Divider sx={{ margin: "8px 0px" }} />
-        <BaseList items={vendor_list} item_type={FeatureListItem} />
+        <BaseList items={presenter_list} item_type={FeatureListItem} />
       </Container>
     </>
   );
 };
 
 export const query = {
-  page_data: { model: "items/conference_vendors" },
-  vendor_list: { model: "items/conference_vendor_list" },
+  page_data: { model: "items/conference_presenters" },
+  presenter_list: { model: "items/conference_presenter_list" },
 };
 
 Page.getLayout = (page: React.ReactNode) => {
