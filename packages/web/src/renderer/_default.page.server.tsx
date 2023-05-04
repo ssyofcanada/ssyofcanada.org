@@ -1,5 +1,6 @@
 import React from "react";
 
+import { ServerStyles, createStylesServer } from "@mantine/ssr";
 import { dangerouslySkipEscape, escapeInject } from "vite-plugin-ssr/server";
 import ReactDOMServer from "react-dom/server";
 
@@ -12,6 +13,8 @@ import { PageShell } from "./pages";
 // See https://vite-plugin-ssr.com/data-fetching
 export const passToClient = ["pageProps"];
 // export const passToClient = ["pageProps", "urlPathname"];
+
+const stylesServer = createStylesServer();
 
 export const render = async (pageContext: PageContextServer) => {
   const { get } = new Stande({
@@ -32,10 +35,14 @@ export const render = async (pageContext: PageContextServer) => {
     },
   } = pageContext;
 
-  const pageHtml = ReactDOMServer.renderToString(
+  const pageContent = ReactDOMServer.renderToString(
     <PageShell pageContext={pageContext}>
       <Page {...pageProps} />
     </PageShell>
+  );
+
+  const styles = ReactDOMServer.renderToStaticMarkup(
+    <ServerStyles html={pageContent} server={stylesServer} />
   );
 
   // See https://vite-plugin-ssr.com/head
@@ -71,11 +78,15 @@ export const render = async (pageContext: PageContextServer) => {
           web_config.host
         }/assets/logo/default.svg">
 
-				<style>.hideUnstyled { display: none }</style>
-      </head>
+				<!-- Styles -->
+				${dangerouslySkipEscape(styles)}
+				<style>
+					.hideUnstyled { display: none }
+				</style>
+				</head>
       <body>
         <div id="page-view">
-					${dangerouslySkipEscape(pageHtml)}
+					${dangerouslySkipEscape(pageContent)}
 				</div>
       </body>
     </html>`;
@@ -98,22 +109,43 @@ export const onBeforeRender = async (pageContext: PageContextServer) => {
   const response_data = await Promise.all(
     query_keys.map(async (query_key) => {
       const query_data = query[query_key];
+      const { select = [], filter = {} } = query_data;
 
       const { fetch } = new Stande({
         base_url: web_config.cms_host,
       });
 
-      const response = await fetch(query_data.model, {
+      const filter_parameters =
+        Object.keys(filter ?? {}).reduce(
+          (acc, field) => ({
+            ...acc,
+            ...Object.keys(filter[field]).reduce(
+              (acc, x) => ({
+                ...acc,
+                [`filter[${field}][${x}]`]: filter[field][x],
+              }),
+              {}
+            ),
+          }),
+          {}
+        ) ?? {};
+
+      const select_parameters = select.join(",");
+
+      const response = await fetch([query_data.model].join("?"), {
         method: query_data.method || "get",
-        parameters: query_data.parameters,
+        parameters: {
+          ...query_data.parameters,
+          ...filter_parameters,
+          fields: select_parameters,
+        },
         ...(!query_data.method || query_data.method === "get"
           ? {}
           : {
               body: {
                 query: {
-                  fields: query_data.select?.join(","),
-                  filter: query_data.filter,
-                  sort: query_data.sort,
+                  fields: select?.join(","),
+                  filter,
                 },
               },
             }),

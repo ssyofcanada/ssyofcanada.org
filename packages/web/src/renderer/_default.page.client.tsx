@@ -42,7 +42,7 @@ let root: ReactDOM.Root;
 export const render = (pageContext: PageContextClient) => {
   const { Page, pageProps } = pageContext;
 
-  const page = (
+  const pageContent = (
     <PageShell pageContext={pageContext}>
       <Page {...pageProps} />
     </PageShell>
@@ -52,9 +52,9 @@ export const render = (pageContext: PageContextClient) => {
   const container = document.getElementById("page-view")!;
 
   if (pageContext.isHydration) {
-    root = hydrateRoot(container, page);
+    root = hydrateRoot(container, pageContent);
   } else {
     if (!root) root = createRoot(container);
-    root.render(page);
+    root.render(pageContent);
   }
 };
