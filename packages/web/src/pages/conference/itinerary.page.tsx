@@ -17,7 +17,10 @@ export const Page = ({ page_data: { heading, content } }: PageProps) => {
         <Title color="brand-red">{heading}</Title>
       </Container>
       <Container>
-        <Text dangerouslySetInnerHTML={{ __html: content }} />
+        <Text
+          dangerouslySetInnerHTML={{ __html: content }}
+          sx={{ p: { margin: 0 } }}
+        />
       </Container>
     </>
   );
