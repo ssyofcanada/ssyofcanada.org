@@ -7,7 +7,7 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: ["./tsconfig.json"],
+    project: ["./tsconfig.build.json"],
     sourceType: "module",
   },
   plugins: ["@typescript-eslint"],
@@ -16,7 +16,6 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "prettier",
   ],
-  ignorePatterns: [".eslintrc.js", "jest.config.ts"],
   rules: {
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/sort-type-constituents": "error",

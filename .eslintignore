@@ -1,7 +1,8 @@
 /.vscode/
 /**/ignore_*
+/**/.eslintrc.cjs
+/**/.eslintrc.js
 
-.DS_Store
 .env*
 !.env.local
 !.env*.example
@@ -23,5 +24,4 @@ coverage/
 # !/.yarn/cache
 /.pnp.*
 
-/**/.eslintrc*
 yarn.lock
