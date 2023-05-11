@@ -87,9 +87,7 @@ export const render = async (pageContext: PageContextServer) => {
 				</style>
 				</head>
       <body>
-        <div id="page-view">
-					${dangerouslySkipEscape(pageContent)}
-				</div>
+        <div id="page-view">${dangerouslySkipEscape(pageContent)}</div>
       </body>
     </html>`;
 
