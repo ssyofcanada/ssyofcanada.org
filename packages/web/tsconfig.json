@@ -40,8 +40,10 @@
     "./src/**/*",
     "./typings/**/*.d.ts",
     "../../typings/**/*.d.ts",
+    "./api/*",
     "vite-env.d.ts",
-    "vite.config.ts"
+    "vite.config.ts",
+    "jest.config.ts"
     // "api/vite-env.d.ts"
   ]
 }

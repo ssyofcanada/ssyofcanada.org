@@ -4,7 +4,7 @@
     "baseUrl": "./src",
     "outDir": "./dist",
     "target": "es6",
-    "module": "esnext"
+    "module": "es2020"
     // "noEmit": false,
     // "declaration": true,
     // "declarationMap": true,

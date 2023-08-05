@@ -38,5 +38,5 @@
     "types": ["@types/node"]
   },
   "exclude": ["node_modules", "/**/*.spec.ts"],
-  "include": ["./typings/**/*.d.ts"]
+  "include": ["./typings/**/*.d.ts", "./api/*", "jest.config.ts"]
 }
