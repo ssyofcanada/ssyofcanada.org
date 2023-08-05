@@ -5,6 +5,7 @@
     /* build options */
     "allowJs": true,
     "checkJs": true
-  }
+  },
+  "exclude": ["./api/*", "jest.config.ts"]
   // "include": ["./api/**/*.ts", "./api/**/*.js"]
 }
