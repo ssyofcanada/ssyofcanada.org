@@ -43,13 +43,13 @@ export const Page = ({
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: 16,
+            gap: 24,
           }}
         >
           <Box
             sx={{
               display: "flex",
-              gap: 16,
+              gap: 24,
               "@media (max-width: 920px)": {
                 alignItems: "center",
                 flexDirection: "column",
@@ -83,16 +83,18 @@ export const Page = ({
               </Box>
             </Box>
 
-            <Box sx={{ flexBasis: 320, flexGrow: 0 }}>
-              <Title size="h2" order={2} color="brand-red" mb={16}>
-                Recent Blog Posts
-              </Title>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {blog_posts.map((x) => (
-                  <SmallArticleCard key={x.id} {...x} />
-                ))}
+            {!!blog_posts.length && (
+              <Box sx={{ flexBasis: 320, flexGrow: 0 }}>
+                <Title size="h2" order={2} color="brand-red" mb={16}>
+                  Recent Blog Posts
+                </Title>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {blog_posts.map((x) => (
+                    <SmallArticleCard key={x.id} {...x} />
+                  ))}
+                </Box>
               </Box>
-            </Box>
+            )}
           </Box>
           <Box>
             <Title size="h2" order={2} color="brand-red" mb={16}>
