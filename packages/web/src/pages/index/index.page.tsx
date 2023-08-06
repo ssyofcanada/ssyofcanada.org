@@ -99,7 +99,7 @@ export const Page = ({
 
           <Box>
             <Title size="h2" order={2} color="brand-red" mb={16}>
-              Gold & Silver Sponsors
+              Our Sponsors
             </Title>
             <BaseList items={sponsor_list} item_type={FeatureListItem} />
           </Box>
