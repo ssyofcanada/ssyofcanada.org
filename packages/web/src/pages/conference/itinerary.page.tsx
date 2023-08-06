@@ -142,7 +142,7 @@ export const Page = ({
           className="page-content"
         />
 
-        <Divider sx={{ margin: "8px 0px" }} />
+        <Divider sx={{ margin: "16px 0px" }} />
 
         <Box
           sx={{
