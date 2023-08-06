@@ -24,7 +24,9 @@ export const Page = ({ page_data, presenter_list }: PageProps) => {
       </Container>
       <Container>
         <Text dangerouslySetInnerHTML={{ __html: page_data.content }} />
-        <Divider sx={{ margin: "8px 0px" }} />
+
+        <Divider sx={{ margin: "16px 0px" }} />
+
         <BaseList items={presenter_list} item_type={FeatureListItem} />
       </Container>
     </>

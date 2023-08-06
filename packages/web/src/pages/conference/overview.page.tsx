@@ -164,18 +164,19 @@ export const Page = ({
             radius={4}
           />
         )}
-        <Text
+
+        <Box
           dangerouslySetInnerHTML={{ __html: content }}
           className="page-content"
         />
 
-        <Divider sx={{ margin: "8px 0px" }} />
+        <Divider sx={{ margin: "16px 0px" }} />
 
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: 48,
+            gap: 24,
           }}
         >
           {overview_list.map((item) => (
