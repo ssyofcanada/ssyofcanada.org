@@ -183,18 +183,40 @@ export const MemberListItem = ({
           <Text size="xs">{roles.join(" | ")}</Text>
         </Title>
         {email && (
-          <Text size="sm">
-            <Link href={`mailto:${email}`}>
+          <Text
+            size="sm"
+            lineClamp={1}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 4,
+            }}
+          >
+            <Box sx={{ minWidth: "14px" }}>
               <FiMail />
+            </Box>
+            <Link href={`mailto:${email}`}>
               {`Email ${first_name}`}
+              {/* {"Send an Email"} */}
             </Link>
           </Text>
         )}
         {social_instagram && (
-          <Text size="sm">
-            <Link href={`https://www.instagram.com/${social_instagram}/`}>
+          <Text
+            size="sm"
+            lineClamp={1}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 4,
+            }}
+          >
+            <Box sx={{ minWidth: "14px" }}>
               <FiInstagram />
+            </Box>
+            <Link href={`https://www.instagram.com/${social_instagram}/`}>
               {`${first_name}'s Instagram`}
+              {/* {"Their Instagram"} */}
             </Link>
           </Text>
         )}

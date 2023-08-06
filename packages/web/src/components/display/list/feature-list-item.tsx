@@ -181,29 +181,59 @@ export const FeatureListItem = ({
           </Title>
         )}
         {email && (
-          <Text size="sm" lineClamp={1}>
-            <Link href={`mailto:${email}`}>
+          <Text
+            size="sm"
+            lineClamp={1}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 4,
+            }}
+          >
+            <Box sx={{ minWidth: "14px" }}>
               <FiMail />
+            </Box>
+            <Link href={`mailto:${email}`}>
               {`Email ${name}`}
-              {/* {email} */}
+              {/* {"Send an Email"} */}
             </Link>
           </Text>
         )}
         {social_instagram && (
-          <Text size="sm" lineClamp={1}>
-            <Link href={`https://www.instagram.com/${social_instagram}/`}>
+          <Text
+            size="sm"
+            lineClamp={1}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 4,
+            }}
+          >
+            <Box sx={{ minWidth: "14px" }}>
               <FiInstagram />
+            </Box>
+            <Link href={`https://www.instagram.com/${social_instagram}/`}>
               {`${name}'s Instagram`}
+              {/* {"Their Instagram"} */}
             </Link>
           </Text>
         )}{" "}
         {website_link && !hide_link && (
-          <Text size="sm" lineClamp={1}>
-            <Link href={`https://${website_link}`}>
+          <Text
+            size="sm"
+            lineClamp={1}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 4,
+            }}
+          >
+            <Box sx={{ minWidth: "14px" }}>
               <FiLink />
-              {`Their Website`}
-              {/* {`${name}'s Website`} */}
-              {/* {website_link} */}
+            </Box>
+            <Link href={`https://${website_link}`}>
+              {`${name}'s Website`}
+              {/* {`Their Website`} */}
             </Link>
           </Text>
         )}
