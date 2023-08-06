@@ -73,34 +73,47 @@ export const FeatureListItem = ({
       {/* <Title size="xs" order={3}>
         <Text size="xs">{roles.join(" | ")}</Text>
       </Title> */}
-      <Text size="sm">{info}</Text>
-      {email && (
-        <Text size="sm" lineClamp={1}>
-          <Link href={`mailto:${email}`}>
-            <FiMail />
-            {`Email ${name}`}
-            {/* {email} */}
-          </Link>
-        </Text>
-      )}
-      {social_instagram && (
-        <Text size="sm" lineClamp={1}>
-          <Link href={`https://www.instagram.com/${social_instagram}/`}>
-            <FiInstagram />
-            {`${name}'s Instagram`}
-            {/* {social_instagram} */}
-          </Link>
-        </Text>
-      )}
-      {website_link && !hide_link && (
-        <Text size="sm" lineClamp={1}>
-          <Link href={`https://${website_link}`}>
-            <FiLink />
-            {`${name}'s Website`}
-            {/* {website_link} */}
-          </Link>
-        </Text>
-      )}
+      <Text
+        size="sm"
+        dangerouslySetInnerHTML={{
+          __html: (info ?? "").replace(/\n/, "<p>&nbsp;</p>"),
+        }}
+      />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 8,
+        }}
+      >
+        {email && (
+          <Text size="sm" lineClamp={1}>
+            <Link href={`mailto:${email}`}>
+              <FiMail />
+              {`Email ${name}`}
+              {/* {email} */}
+            </Link>
+          </Text>
+        )}
+        {social_instagram && (
+          <Text size="sm" lineClamp={1}>
+            <Link href={`https://www.instagram.com/${social_instagram}/`}>
+              <FiInstagram />
+              {`${name}'s Instagram`}
+              {/* {social_instagram} */}
+            </Link>
+          </Text>
+        )}
+        {website_link && !hide_link && (
+          <Text size="sm" lineClamp={1}>
+            <Link href={`https://${website_link}`}>
+              <FiLink />
+              {`${name}'s Website`}
+              {/* {website_link} */}
+            </Link>
+          </Text>
+        )}
+      </Box>
     </Drawer>
   );
 
@@ -109,6 +122,8 @@ export const FeatureListItem = ({
       sx={{
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
+        alignContent: "center",
       }}
     >
       <Box
@@ -123,8 +138,6 @@ export const FeatureListItem = ({
         <Image
           src={`https://${web_config.cms_host}/assets/${cover_image}?key=small-logo`}
           radius="sm"
-          width="auto"
-          height={172}
           onClick={open}
         />
         {/* </Link> */}

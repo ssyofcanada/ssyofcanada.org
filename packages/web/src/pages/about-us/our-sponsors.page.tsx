@@ -43,7 +43,9 @@ export const Page = ({
       </Container>
       <Container>
         <Text dangerouslySetInnerHTML={{ __html: content }} />
-        <Divider sx={{ margin: "8px 0px" }} />
+
+        <Divider sx={{ margin: "16px 0px" }} />
+
         <Box sx={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <Box>
             <Title size="h2" order={2} color="brand-red">
