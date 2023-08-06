@@ -57,7 +57,12 @@ export const MemberListItem = ({
       <Title size="xs" order={3}>
         <Text size="xs">{roles.join(" | ")}</Text>
       </Title>
-      <Text size="sm">{info}</Text>
+      <Text
+        size="sm"
+        dangerouslySetInnerHTML={{
+          __html: (info ?? "").replace(/\n/, "<p>&nbsp;</p>"),
+        }}
+      />
       {email && (
         <Text size="sm">
           <Link href={`mailto:${email}`}>

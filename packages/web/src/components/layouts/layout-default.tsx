@@ -62,7 +62,7 @@ export const Layout = ({
               <Link href="/conference/presenters">Presenters</Link>
             </DesktopNavigationDropdownItem>
             <DesktopNavigationDropdownItem>
-              <Link href="/conference/vendors">Vendors</Link>
+              <Link href="/conference/vendors">Vendors & Booths</Link>
             </DesktopNavigationDropdownItem>
             <DesktopNavigationDropdownItem>
               <Link href="/conference/get-involved">Get Involved</Link>
