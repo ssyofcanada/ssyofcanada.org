@@ -96,11 +96,12 @@ export const Page = ({
               </Box>
             )}
           </Box>
+
           <Box>
             <Title size="h2" order={2} color="brand-red" mb={16}>
               Gold & Silver Sponsors
             </Title>
-            <BaseList items={sponsor_list} item_type={FeatureListItem} center />
+            <BaseList items={sponsor_list} item_type={FeatureListItem} />
           </Box>
         </Box>
       </Container>
@@ -128,8 +129,11 @@ export const query = {
       "sort[]": "-tier",
     },
     filter: {
+      status: {
+        _eq: "published",
+      },
       tier: {
-        _gte: SponsorTier.SILVER,
+        _gte: SponsorTier.IN_KIND,
       },
     },
   },
