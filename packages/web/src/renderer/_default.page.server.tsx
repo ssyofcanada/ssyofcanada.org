@@ -4,9 +4,9 @@ import { ServerStyles, createStylesServer } from "@mantine/ssr";
 import { dangerouslySkipEscape, escapeInject } from "vite-plugin-ssr/server";
 import ReactDOMServer from "react-dom/server";
 
-import { base_config, web_config } from "@lib/config";
-import { PageContextServer } from "@lib/vite-react";
+import { PageContextServer, PageProps } from "@lib/vite-react";
 import { Stande } from "@lib/stande";
+import { web_config } from "@lib/config";
 
 import { PageShell } from "./pages";
 
@@ -21,6 +21,7 @@ export const render = async (pageContext: PageContextServer) => {
     base_url: web_config.cms_host,
     api_token_type: "Bearer",
   });
+
   const response = await get("items/global_configuration", {});
   if (!response.ok) return null;
 
@@ -46,9 +47,14 @@ export const render = async (pageContext: PageContextServer) => {
     <ServerStyles html={pageContent} server={stylesServer} />
   );
 
+  const pageData: PageProps = ((pageProps ?? {}).page_data as PageProps) ?? {};
   // See https://vite-plugin-ssr.com/head
-  const title = documentProps.title || base_config.app_title;
-  const description = documentProps.description || base_config.app_description;
+  const heading = (pageData.heading as string) ?? null;
+  const content_preview = (pageData.content_preview as string) ?? null;
+
+  const title = heading || documentProps.title || web_config.app_title;
+  const description =
+    content_preview || documentProps.description || web_config.app_description;
 
   const documentHtml = escapeInject`
 		<!DOCTYPE html>
@@ -58,15 +64,15 @@ export const render = async (pageContext: PageContextServer) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${description}" />
     		<link rel="canonical" href="https://${web_config.web_host}${urlPathname}"/>
-        <title>${title}</title>
+        <title>${web_config.app_title} - ${title}</title>
 				<link rel="manifest" href="/manifest.json">
         <link rel="icon" href="https://${web_config.host}/favicon.svg" />
 				
 				<!-- Open Graph / Facebook -->
 				<meta property="og:type" content="website">
 				<meta property="og:url" content="https://${web_config.web_host}">
-				<meta property="og:title" content="${web_config.app_title}">
-				<meta property="og:description" content="${web_config.app_description}">
+				<meta property="og:title" content="${web_config.app_title} - ${title}">
+				<meta property="og:description" content="${description}">
 				<meta property="og:image" content="https://${
           web_config.host
         }/assets/logo/default.svg">
@@ -74,8 +80,8 @@ export const render = async (pageContext: PageContextServer) => {
 				<!-- Twitter -->
 				<meta property="twitter:card" content="summary_large_image">
 				<meta property="twitter:url" content="https://${web_config.web_host}">
-				<meta property="twitter:title" content="${web_config.app_title}">
-				<meta property="twitter:description" content="${web_config.app_description}">
+				<meta property="twitter:title" content="${web_config.app_title} - ${title}">
+				<meta property="twitter:description" content="${description}">
 				<meta property="twitter:image" content="https://${
           web_config.host
         }/assets/logo/default.svg">
@@ -87,6 +93,7 @@ export const render = async (pageContext: PageContextServer) => {
 				</style>
 				</head>
       <body>
+				<div style="display: none;visibility: hidden;">${description}</div>
         <div id="page-view">${dangerouslySkipEscape(pageContent)}</div>
       </body>
     </html>`;
