@@ -107,7 +107,7 @@ export const MemberListItem = ({
         <Image
           src={`https://${web_config.cms_host}/assets/${cover_image}?key=large-avatar`}
           radius="sm"
-        />
+        ></Image>
         <Box
           sx={{
             display: "none",

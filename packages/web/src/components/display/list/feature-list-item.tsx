@@ -66,13 +66,12 @@ export const FeatureListItem = ({
       <Image
         src={`https://${web_config.cms_host}/assets/${cover_image}?key=large-avatar`}
         radius="sm"
-      />
+      ></Image>
+
       <Title size="h2" order={2} color="brand-red">
         {name}
       </Title>
-      {/* <Title size="xs" order={3}>
-        <Text size="xs">{roles.join(" | ")}</Text>
-      </Title> */}
+
       <Text
         size="sm"
         dangerouslySetInnerHTML={{
@@ -129,19 +128,25 @@ export const FeatureListItem = ({
       <Box
         sx={{
           position: "relative",
+          borderRadius: "sm",
           display: "flex",
           justifyContent: center ? "center" : "initial",
           ":hover": { cursor: "pointer" },
         }}
       >
-        {/* <Link href={`https://${website_link}`} sx={{ display: "block" }}> */}
         <Image
           src={`https://${web_config.cms_host}/assets/${cover_image}?key=small-logo`}
           radius="sm"
           onClick={open}
-        />
-        {/* </Link> */}
+          sx={{
+            backgroundColor: "#fff",
+            padding: 16,
+            overflow: "hidden",
+            borderRadius: 4,
+          }}
+        ></Image>
       </Box>
+
       <Box
         mt={8}
         mb={4}
@@ -159,7 +164,7 @@ export const FeatureListItem = ({
           },
         }}
       >
-        <Title size="md" order={3} color="brand-red">
+        <Title size="md" order={3} color="brand-red" sx={{ margin: 0 }}>
           {name}
         </Title>
         {/* {!!tier && tier > 1 && (
