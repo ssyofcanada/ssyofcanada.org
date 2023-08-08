@@ -20,7 +20,13 @@ ul {
 
 p {
   margin-top: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
+}
+
+a {
+  color: #aa7a02;
+  text-decoration: none;
+  // font-weight: 600;
 }
 
 .is-active {
