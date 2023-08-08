@@ -144,7 +144,7 @@ export const Page = ({
           <Title size="h2" order={2}>
             {heading}
           </Title>
-          <Text size="sm">{content}</Text>
+          <Text size="sm" dangerouslySetInnerHTML={{ __html: content }}></Text>
         </Box>
       </Box>
     );
